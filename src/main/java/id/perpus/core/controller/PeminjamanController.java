@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-public class PeminjamanController extends AbstractController<PinjamanDTO, Peminjaman> {
+public class  PeminjamanController extends AbstractController<PinjamanDTO, Peminjaman> {
 
     private final PeminjamanService service;
 

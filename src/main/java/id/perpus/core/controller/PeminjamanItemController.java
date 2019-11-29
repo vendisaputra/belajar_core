@@ -36,7 +36,7 @@ public class PeminjamanItemController extends AbstractController<PinjamanItemDTO
             return ResponseEntity.badRequest().build();
         }
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(result);
     }
 
     public Map<String, Object> convertModel(Object data) {

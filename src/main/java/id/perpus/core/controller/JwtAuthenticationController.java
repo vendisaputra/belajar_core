@@ -28,8 +28,19 @@ public class JwtAuthenticationController {
     @Autowired
     private UserService service;
 
-    @PostMapping(value = "/authenticate")
+    @PostMapping(value = "/do-login")
     public ResponseEntity<?> createAuth(@RequestBody UserRequest user)throws Exception{
+        authenticate(user.getUsername(), user.getPassword());
+
+        final UserDetails userDetails = service.loadUserByUsername(user.getUsername());
+
+        final String token = tokenService.generateToken(userDetails);
+
+        return ResponseEntity.ok(new UserResponse(token));
+    }
+
+    @PostMapping(value = "/login")
+    public ResponseEntity<?> login(@RequestBody UserRequest user)throws Exception{
         authenticate(user.getUsername(), user.getPassword());
 
         final UserDetails userDetails = service.loadUserByUsername(user.getUsername());
